@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LibraryApp">
+<head>
+    <title>Library App</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/lib/bootstrap/bootstrap.min.css"/>
+    <script src="js/lib/angular/angular.min.js"></script>
+    <script src="js/lib/angular/angular-recaptcha.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async
+            defer></script>
+</head>
+<body>
+
+<div id="main" ng-controller="libraryController" class="container">
+
+    <h3>Books</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>
+                <button ng-click="showAddModal();" class="btn btn-success"><span
+                        class="glyphicon glyphicon-user"></span>Add
+                </button>
+            </th>
+        </tr>
+
+        <tr ng-repeat="book in books">
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>
+                <button ng-click="showEditModal(book);" class="btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                </button>
+                <button ng-click="deleteBook(book.id);" class="btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;
+                    Remove
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <div class='ng-modal' ng-show="addModal">
+        <div class='ng-modal-overlay' ng-click='hideAddModal()'></div>
+        <div class='ng-modal-dialog'>
+            <div class='ng-modal-close' ng-click='hideAddModal()'>X</div>
+            <div class='ng-modal-dialog-content'>
+                <div>
+                    <label for="inputName">Book Name</label>
+
+                    <div>
+                        <input type="text" id="inputName" ng-model="book.name" placeholder="Book Name">
+                    </div>
+                </div>
+                <div>
+                    <label for="inputAuhor">Author Name</label>
+
+                    <div>
+                        <input type="text" id="inputAuhor" ng-model="book.author" placeholder="Author Name">
+                    </div>
+                </div>
+                <div>
+                    <hr/>
+                    <div>
+                        <div vc-recaptcha
+                             key="'6LfhBQsTAAAAACm0mT055ZyOD4Q9BRtKkz4L_PWC'"
+                             on-success="setResponse(response)"
+                             on-expire="cbExpiration()"></div>
+                        <button type="button" class="btn" ng-click="addBook(book)"><span
+                                class="glyphicon glyphicon-pencil"></span>Add Book
+                        </button>
+                        <button type="button" class="btn" ng-click="hideAddModal()"><span
+                                class="glyphicon glyphicon-pencil"></span>Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='ng-modal' ng-show='editModal'>
+        <div class='ng-modal-overlay' ng-click='hideEditModal()'></div>
+        <div class='ng-modal-dialog'>
+            <div class='ng-modal-close' ng-click='hideEditModal()'>X</div>
+            <div class='ng-modal-dialog-content'>
+                <div>
+                    <label for="editInputName">Book Name</label>
+
+                    <div>
+                        <input type="text" id="editInputName" ng-model="book.name" placeholder="Book Name">
+                    </div>
+                </div>
+                <div>
+                    <label for="editInputAuhor">Author Name</label>
+
+                    <div>
+                        <input type="text" id="editInputAuhor" ng-model="book.author" placeholder="Author Name">
+                    </div>
+                </div>
+                <div>
+                    <hr/>
+                    <div>
+                        <button type="button" class="btn" ng-hide="editMode" ng-click="editBook(book);"><span
+                                class="glyphicon glyphicon-pencil"></span>Edit Book
+                        </button>
+                        <button type="button" class="btn" ng-click="hideEditModal();"><span
+                                class="glyphicon glyphicon-pencil"></span>Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
