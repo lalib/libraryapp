@@ -52,11 +52,6 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>angularjs</artifactId>
-            <version>${webjars.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
