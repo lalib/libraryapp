@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar -Dspring.data.mongodb.host=ds031883.mongolab.com -Dspring.data.mongodb.port=31883 -Dspring.data.mongodb.database=heroku_c7mgd018 -Dspring.data.mongodb.username=heroku_c7mgd018 -Dspring.data.mongodb.password=cnl02ni5ohpe6788fsoa1hldup
+web: java $JAVA_OPTS -jar target/libraryapp-0.0.1-SNAPSHOT.jar
