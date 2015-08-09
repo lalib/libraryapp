@@ -1,0 +1,4 @@
+library-app.iml
+log.txt
+target/**
+.idea/**
