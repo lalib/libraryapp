@@ -1,4 +1,4 @@
-#Library APP
+#Library APP [![Build Status](https://travis-ci.org/lalib/libraryapp.svg?branch=master)](https://travis-ci.org/lalib/libraryapp)
 
 A simple library web application that uses Spring Boot Mvc, AngularJS and MongoDB
 
