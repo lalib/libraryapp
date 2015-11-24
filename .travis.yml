@@ -1,7 +1,6 @@
 language: java
 after_success:
   bash <(curl -s https://codecov.io/bash) -t c2a38e33-608a-446e-8514-22cb8744dfae
-
 before_install:
   - pip install --user codecov
 after_success:
